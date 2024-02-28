@@ -5,6 +5,8 @@ Created on 7 Jul 2023
 '''
 from src.nexusAsciiConvertor import nexusAsciiConvertor
 import time, os, re
+
+
 #for single files------------------------------------------------------------------------
 M = nexusAsciiConvertor()
 """
@@ -29,12 +31,13 @@ for filename in sorted(os.listdir(inPutFolder)):
         M.convert(inPutFolder+filename, tempFilename)
         
 """
+
 # forever loop----------------
 
-inPutFolder = "C:\\Users\\wvx67826\\Desktop\\Data\\"#"Z:\\2023\\mm33256-1\\"
-outputFolder = "C:\\Users\\wvx67826\\Desktop\\Data\\"
-newScanNo = 786596
-lastScanNo = 786565
+inPutFolder = "Z:\\2024\\nt37459-1\\"
+outputFolder = ""
+newScanNo = 818041
+lastScanNo = 817547
 timeOut = 0
 retryFlag = False
 while timeOut < 24*3600:
@@ -73,5 +76,3 @@ while timeOut < 24*3600:
                 retryFlag = True
         lastScanNo = newScanNo
         timeOut = 0
-
-        

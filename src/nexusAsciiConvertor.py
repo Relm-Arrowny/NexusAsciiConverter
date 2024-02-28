@@ -6,7 +6,7 @@ Created on 7 Jul 2023
 
 import h5py    # HDF5 support
 import numpy as np
-
+import collections.abc
 
 class nexusAsciiConvertor():
     def __init__(self):
@@ -18,13 +18,12 @@ class nexusAsciiConvertor():
     
     def visitData(self, name, node):
         if isinstance(node, h5py.Dataset):
-            try:
-                node.len()
-                self.dataName.append (name)
-                self.dataValue.append(node[()])
-            except TypeError:
+            if (not node.shape):
                 self.metaName.append(name)
                 self.metaValue.append(node[()])
+            else:
+                self.dataName.append (name)
+                self.dataValue.append(node[()])
         return None
     
     def loadData(self, filename):
