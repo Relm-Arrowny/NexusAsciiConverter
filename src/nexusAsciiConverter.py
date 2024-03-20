@@ -8,7 +8,7 @@ import h5py    # HDF5 support
 import numpy as np
 import collections.abc
 
-class nexusAsciiConvertor():
+class nexusAsciiConverter():
     def __init__(self):
         self.metaName = []
         self.metaValue = []

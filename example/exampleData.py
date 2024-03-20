@@ -3,12 +3,12 @@ Created on 7 Jul 2023
 
 @author: wvx67826
 '''
-from src.nexusAsciiConvertor import nexusAsciiConvertor
+from src.nexusAsciiConverter import nexusAsciiConverter
 import time, os, re
 
 
 #for single files------------------------------------------------------------------------
-M = nexusAsciiConvertor()
+M = nexusAsciiConverter()
 """
 # input/output file name
 filename = 727909   
