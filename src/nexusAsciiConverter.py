@@ -10,12 +10,7 @@ import collections.abc
 
 class nexusAsciiConverter():
     def __init__(self):
-        self.metaName = []
-        self.metaValue = []
-        self.dataName = []
-        self.dataValue = []
-        self.nexusData = None
-        self.longestData = 0
+        self.clearData()
     
     def visitData(self, name, node):
         if isinstance(node, h5py.Dataset):
@@ -66,5 +61,6 @@ class nexusAsciiConverter():
         self.dataName = []
         self.dataValue = []
         self.nexusData = None
+        self.longestData = 0
         
         
