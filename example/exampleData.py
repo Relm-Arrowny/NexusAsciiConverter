@@ -9,7 +9,7 @@ import time, os, re
 
 #for single files------------------------------------------------------------------------
 M = nexusAsciiConverter()
-"""
+
 # input/output file name
 filename = 727909   
 inputFileName = "testData//i10-" +str(filename) +".nxs"
@@ -19,22 +19,22 @@ outPutFileName = str(filename) + ".dat"
 #Do the conversion 
 M.convert(inputFileName, outPutFileName)
 
-"""
-"""
+
+
 #Same as above but for the entire folder ---------------------------------------------------------------
-inPutFolder = "Z:\\2023\\mm32864-1\\"
-outputFolder = "Z:\\2023\\mm32864-1\\processing\\data\\"
+inPutFolder = "testData/"
+outputFolder = "testData/"
 for filename in sorted(os.listdir(inPutFolder)):
     if filename[-4:] == ".nxs": #only work on .nxs extension 
         tempFilename = "%s%s.dat" %(outputFolder,filename[4:-4])  
         exist = os.path.isfile(tempFilename)
         M.convert(inPutFolder+filename, tempFilename)
         
-"""
 
+"""
 # forever loop----------------
 
-inPutFolder = "Z:\\2024\\nt37459-1\\"
+inPutFolder =  "testData/"
 outputFolder = ""
 newScanNo = 818041
 lastScanNo = 817547
@@ -76,3 +76,4 @@ while timeOut < 24*3600:
                 retryFlag = True
         lastScanNo = newScanNo
         timeOut = 0
+    """

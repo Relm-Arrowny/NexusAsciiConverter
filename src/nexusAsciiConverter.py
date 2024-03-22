@@ -15,6 +15,7 @@ class nexusAsciiConverter():
         self.dataName = []
         self.dataValue = []
         self.nexusData = None
+        self.longestData = 0
     
     def visitData(self, name, node):
         if isinstance(node, h5py.Dataset):
@@ -24,6 +25,8 @@ class nexusAsciiConverter():
             else:
                 self.dataName.append (name)
                 self.dataValue.append(node[()])
+                if (node[()].size > self.longestData):
+                    self.longestData = node[()].size 
         return None
     
     def loadData(self, filename):
@@ -41,7 +44,7 @@ class nexusAsciiConverter():
         for i in self.dataName:
             f.write("%s \t" %i)
         f.write("\n" )
-        for j in range (0,len(self.dataValue[0])):
+        for j in range (0,self.longestData):
             for k in range (0,len(self.dataValue)):
 
                 if j<len(self.dataValue[k]):
