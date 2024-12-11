@@ -12,6 +12,7 @@ Created on 19 Mar 2024
 
 '''
 
+import os
 import socket
 import numpy as np
 from time import time, sleep
@@ -56,13 +57,16 @@ class N2AServer():
             queued_data = queued_data.decode("utf_8")
             temp = re.split(r"(\d+$)", queued_data)
             beamline = re.search(r"(?<=\/dls\/)(.*)(?=\/data)", temp[0])
-            self.nac.convert(temp[0] + beamline.group() + "-" +temp[1] +
-            ".nxs", temp[0] + "processing/" + beamline.group() +
-             "-" +temp[1] + "dat")
-            print(temp, beamline)
+            path = temp[0] + beamline.group() + "-" +temp[1] +".nxs"
+            if os.path.exists(path):
+                self.nac.convert(path , temp[0] + "processing/" + beamline.group() +
+                "-" +temp[1] + "dat")
+                print(temp, beamline)
+            else:
+                print("File no in path.")
             
         return True
-#=====================================================================================================================
+#===================================================================================
     def sendError(self, errorMessage = "Unknown request"):
         self.conn.sendall(errorMessage.encode("utf_8"))
     
